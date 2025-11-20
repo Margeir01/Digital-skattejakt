@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="no">
+<head>
+    <meta charset="utf-8">
+    <title>Min første nettside med javascript</title>
+    <style>
+        body {
+            background-color: rgb(209, 56, 220);
+            color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            color: #4caf50;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #43a049;
+        }
+        #melding {
+            transition: all 0.4s ease; 
+            font-size:20px;
+            color: white;
+
+        
+        }
+        </style>
+        
+    </head>
+    <body>
+        <h1>Hei, Velkommen!</h1>
+        <p id="melding">trykk på knappen for å se en melding:</p>
+        <input type="text" id="navnInput" placeholder="Skriv navnet ditt">
+        <input type="number" id="ageInput" placeholder="skriv alderen din">
+        <button onclick="visNavn()">Send</button>
+
+<script>
+   function visNavn() {
+    let navn = document.getElementById("navnInput").value;
+    let age = document.getElementById("ageInput").value;
+    document.getElementById("melding").textContent = "Hei " + navn + "! du er " + age + " år gammel!";
+
+if (age < 13) {
+    document.getElementById("melding").textContent += " Du er et barn.";
+}
+else if (age < 20) {
+    document.getElementById("melding").textContent += " Du er en tenåring.";
+} else {
+    document.getElementById("melding").textContent += " Du er en voksen.";
+}
+
+    // endre farge og størrelse tilfeldig
+const colors = ["#4caf50", "#ff5733", "#2196f3", "#ffc300", "#9c27b0"];
+let randomColor = colors[Math.floor(Math.random() * colors.length)];
+melding.style.color = randomColor;
+melding.style.fontSize = "26px";
+
+   }
+    
+    </script>
+    </body>
+</html>
