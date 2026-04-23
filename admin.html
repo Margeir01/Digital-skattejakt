@@ -8,56 +8,82 @@
   </head>
   <body>
     <div class="scanlines"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
 
     <main class="admin-container">
+
       <!-- Header -->
       <header class="admin-header">
         <div class="admin-header-left">
           <div class="sys-label">
+            <span class="sys-dot"></span>
             SYS://ADMIN &nbsp;·&nbsp; TILGANG GODKJENT
           </div>
           <h1>Kontrollpanel</h1>
         </div>
+
         <div class="system-time">
           <span class="time-value" id="clockDisplay">--:--:--</span>
-          <span
-            id="dateDisplay"
-            style="
-              font-family: var(--font-mono);
-              font-size: 11px;
-              color: var(--text-muted);
-            "
-          ></span>
+          <span id="dateDisplay" class="date-value"></span>
         </div>
-        <a href="index.html" class="logout-link">⏻ &nbsp;Logg ut</a>
+
+        <a href="index.html" class="logout-link">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Logg ut
+        </a>
       </header>
 
-      <!-- Stat cards -->
-      <div class="status-grid">
-        <div class="stat-card">
-          <div class="stat-label">System Status</div>
-          <div class="stat-value ok">AKTIV</div>
-          <div class="stat-indicator">Alle systemer operative</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Aktive Sesjoner</div>
-          <div class="stat-value">1</div>
-          <div class="stat-indicator">Siste innlogging: nå</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Tilgangsforsøk</div>
-          <div class="stat-value warn">3</div>
-          <div class="stat-indicator">Siste 24 timer</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-label">Sikkerhetsnivå</div>
-          <div class="stat-value ok">A+</div>
-          <div class="stat-indicator">Kryptering aktiv</div>
-        </div>
-      </div>
+<!-- Stat cards -->
+<div class="status-grid">
+  <a
+    href="system-status.html"
+    style="text-decoration: none; color: inherit; display: block;"
+  >
+    <div class="stat-card">
+      <div class="stat-label">System Status</div>
+      <div class="stat-value ok">AKTIV</div>
+      <div class="stat-indicator">Alle systemer operative</div>
+    </div>
+  </a>
+
+  <a
+    href="aktive-sesjoner.html"
+    style="text-decoration: none; color: inherit; display: block;"
+  >
+    <div class="stat-card">
+      <div class="stat-label">Aktive Sesjoner</div>
+      <div class="stat-value">1</div>
+      <div class="stat-indicator">Siste innlogging: nå</div>
+    </div>
+  </a>
+
+  <a
+    href="tilgangsforsok.html"
+    style="text-decoration: none; color: inherit; display: block;"
+  >
+    <div class="stat-card">
+      <div class="stat-label">Tilgangsforsøk</div>
+      <div class="stat-value warn">3</div>
+      <div class="stat-indicator">Siste 24 timer</div>
+    </div>
+  </a>
+
+  <a
+    href="sikkerhetsniva.html"
+    style="text-decoration: none; color: inherit; display: block;"
+  >
+    <div class="stat-card">
+      <div class="stat-label">Sikkerhetsnivå</div>
+      <div class="stat-value ok">A+</div>
+      <div class="stat-indicator">Kryptering aktiv</div>
+    </div>
+  </a>
+</div>
 
       <!-- Panels row -->
       <div class="panel-row">
+
         <!-- Activity Log -->
         <div class="panel">
           <div class="panel-header">
@@ -66,27 +92,27 @@
           </div>
           <div class="panel-body">
             <ul class="log-list" id="logList">
-              <li class="log-entry ok" style="animation-delay: 0.05s">
+              <li class="log-entry ok" style="animation-delay:.05s">
                 <span class="log-time">09:41:22</span>
                 <span class="log-tag ok">AUTH</span>
                 <span class="log-msg">Innlogging vellykket — admin</span>
               </li>
-              <li class="log-entry warn" style="animation-delay: 0.12s">
+              <li class="log-entry warn" style="animation-delay:.12s">
                 <span class="log-time">09:38:54</span>
                 <span class="log-tag warn">WARN</span>
                 <span class="log-msg">Mislykket forsøk — ukjent</span>
               </li>
-              <li class="log-entry err" style="animation-delay: 0.19s">
+              <li class="log-entry err" style="animation-delay:.19s">
                 <span class="log-time">09:37:11</span>
                 <span class="log-tag err">DENY</span>
                 <span class="log-msg">Blokkert IP: 192.168.5.44</span>
               </li>
-              <li class="log-entry ok" style="animation-delay: 0.26s">
+              <li class="log-entry ok" style="animation-delay:.26s">
                 <span class="log-time">09:10:03</span>
                 <span class="log-tag ok">SYS</span>
                 <span class="log-msg">Systemsjekk fullført</span>
               </li>
-              <li class="log-entry ok" style="animation-delay: 0.33s">
+              <li class="log-entry ok" style="animation-delay:.33s">
                 <span class="log-time">08:00:00</span>
                 <span class="log-tag ok">BOOT</span>
                 <span class="log-msg">Tjenester startet</span>
@@ -150,12 +176,12 @@
             </div>
           </div>
         </div>
-      </div>
-      <!-- /panel-row -->
+
+      </div><!-- /panel-row -->
+
     </main>
 
     <script>
-      // Live clock
       function updateClock() {
         const now = new Date();
         document.getElementById("clockDisplay").textContent =
