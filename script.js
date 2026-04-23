@@ -29,7 +29,7 @@ function login() {
     setTimeout(() => {
       window.location.href = "admin.html";
     }, 900);
-  } else {
+  } else {git
     statusText.textContent = "Feil brukernavn eller passord.";
     // Shake animation on error
     const card = document.querySelector(".card");
