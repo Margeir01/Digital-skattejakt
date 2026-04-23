@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Secure Access Portal</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="scanlines"></div>
+
+    <main class="container">
+      <section class="card">
+        <div class="sys-label">
+          SYS://AUTH &nbsp;·&nbsp; NODE-01 &nbsp;·&nbsp; v4.2.1
+        </div>
+
+        <h1>Secure Access Portal</h1>
+        <p class="subtitle">
+          Kun autoriserte brukere har tilgang til systemet.
+        </p>
+
+        <div class="form-group">
+          <label for="username">Bruker-ID</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Skriv inn brukernavn"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Tilgangskode</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="••••••••••"
+            autocomplete="off"
+          />
+        </div>
+
+        <button id="loginBtn"><span>Autentiser tilgang</span></button>
+
+        <p id="status" class="status"></p>
+      </section>
+    </main>
+
+    <!-- Hint: Ikke alt som er skjult, er sikret. -->
+    <script src="script.js"></script>
+  </body>
+</html>

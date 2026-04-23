@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard — Secure Access Portal</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="scanlines"></div>
+
+    <main class="admin-container">
+      <!-- Header -->
+      <header class="admin-header">
+        <div class="admin-header-left">
+          <div class="sys-label">
+            SYS://ADMIN &nbsp;·&nbsp; TILGANG GODKJENT
+          </div>
+          <h1>Kontrollpanel</h1>
+        </div>
+        <div class="system-time">
+          <span class="time-value" id="clockDisplay">--:--:--</span>
+          <span
+            id="dateDisplay"
+            style="
+              font-family: var(--font-mono);
+              font-size: 11px;
+              color: var(--text-muted);
+            "
+          ></span>
+        </div>
+        <a href="index.html" class="logout-link">⏻ &nbsp;Logg ut</a>
+      </header>
+
+      <!-- Stat cards -->
+      <div class="status-grid">
+        <div class="stat-card">
+          <div class="stat-label">System Status</div>
+          <div class="stat-value ok">AKTIV</div>
+          <div class="stat-indicator">Alle systemer operative</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Aktive Sesjoner</div>
+          <div class="stat-value">1</div>
+          <div class="stat-indicator">Siste innlogging: nå</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Tilgangsforsøk</div>
+          <div class="stat-value warn">3</div>
+          <div class="stat-indicator">Siste 24 timer</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Sikkerhetsnivå</div>
+          <div class="stat-value ok">A+</div>
+          <div class="stat-indicator">Kryptering aktiv</div>
+        </div>
+      </div>
+
+      <!-- Panels row -->
+      <div class="panel-row">
+        <!-- Activity Log -->
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">Aktivitetslogg</span>
+            <span class="panel-badge">Live</span>
+          </div>
+          <div class="panel-body">
+            <ul class="log-list" id="logList">
+              <li class="log-entry ok" style="animation-delay: 0.05s">
+                <span class="log-time">09:41:22</span>
+                <span class="log-tag ok">AUTH</span>
+                <span class="log-msg">Innlogging vellykket — admin</span>
+              </li>
+              <li class="log-entry warn" style="animation-delay: 0.12s">
+                <span class="log-time">09:38:54</span>
+                <span class="log-tag warn">WARN</span>
+                <span class="log-msg">Mislykket forsøk — ukjent</span>
+              </li>
+              <li class="log-entry err" style="animation-delay: 0.19s">
+                <span class="log-time">09:37:11</span>
+                <span class="log-tag err">DENY</span>
+                <span class="log-msg">Blokkert IP: 192.168.5.44</span>
+              </li>
+              <li class="log-entry ok" style="animation-delay: 0.26s">
+                <span class="log-time">09:10:03</span>
+                <span class="log-tag ok">SYS</span>
+                <span class="log-msg">Systemsjekk fullført</span>
+              </li>
+              <li class="log-entry ok" style="animation-delay: 0.33s">
+                <span class="log-time">08:00:00</span>
+                <span class="log-tag ok">BOOT</span>
+                <span class="log-msg">Tjenester startet</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Modules -->
+        <div class="panel">
+          <div class="panel-header">
+            <span class="panel-title">Systemmoduler</span>
+            <span class="panel-badge warn">4 / 5 aktive</span>
+          </div>
+          <div class="panel-body">
+            <ul class="module-list">
+              <li class="module-item">
+                <span class="module-name">AUTH_ENGINE</span>
+                <span class="module-status active">AKTIV</span>
+              </li>
+              <li class="module-item">
+                <span class="module-name">ENCRYPTION</span>
+                <span class="module-status active">AKTIV</span>
+              </li>
+              <li class="module-item">
+                <span class="module-name">FIREWALL</span>
+                <span class="module-status active">AKTIV</span>
+              </li>
+              <li class="module-item">
+                <span class="module-name">AUDIT_LOG</span>
+                <span class="module-status active">AKTIV</span>
+              </li>
+              <li class="module-item">
+                <span class="module-name">BACKUP_SVC</span>
+                <span class="module-status offline">OFFLINE</span>
+              </li>
+            </ul>
+
+            <div
+              style="
+                margin-top: 18px;
+                padding-top: 14px;
+                border-top: 1px solid var(--border-dim);
+                opacity: 0.08;
+                font-family: var(--font-mono);
+                font-size: 10px;
+                letter-spacing: 0.08em;
+                line-height: 1.6;
+                user-select: text;
+              "
+            >
+              archive.ref:
+              <a
+                href="https://docs.google.com/document/d/1PhRb25jjZidzIuFeYNSzXIJ8lSGOmNao5AWXwg7v6DQ/edit?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                style="color: inherit; text-decoration: none;"
+              >
+                /docs/internal/archive-node
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /panel-row -->
+    </main>
+
+    <script>
+      // Live clock
+      function updateClock() {
+        const now = new Date();
+        document.getElementById("clockDisplay").textContent =
+          now.toLocaleTimeString("no-NO", { hour12: false });
+        document.getElementById("dateDisplay").textContent =
+          now.toLocaleDateString("no-NO", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          });
+      }
+      updateClock();
+      setInterval(updateClock, 1000);
+    </script>
+  </body>
+</html>
