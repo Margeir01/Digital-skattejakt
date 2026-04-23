@@ -1,9 +1,7 @@
 const loginBtn = document.getElementById("loginBtn");
 const statusText = document.getElementById("status");
 
-// Skjult info i koden (svakhet)
-// Brukernavn: admin
-// Passord: vault2026
+// Dekodede hemmelige informasjone i console
 const secretUsername = atob("YWRtaW4=");
 const secretPassword = atob("dmF1bHQyMDI2");
 
